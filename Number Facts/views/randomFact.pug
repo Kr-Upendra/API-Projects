@@ -1,0 +1,19 @@
+include partials/header
+    .fact-type
+        h4 Get random fact between in a range of number
+    form.form-field
+        .input-box
+            label.label-text Min:
+            input(type='number', min='1', placeholder='day', required='')
+            label.label-text Max:
+            input(type='number', max='12', placeholder='month', required='')
+        button.generate-fact(type='submit') Get Fact
+    .show-fact
+        p.fact-text
+            span.fact
+                strong The Fact : 
+            | the number of kingdoms in Five Dynasties and Ten Kingdoms Period
+        p.number
+            span.fact
+                strong The Number : 
+            | 1789

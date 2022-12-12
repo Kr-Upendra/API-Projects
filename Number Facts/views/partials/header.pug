@@ -1,0 +1,32 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title}
+    link(rel='shortcut icon', href='img/favicon.ico', type='image/x-icon')
+    link(rel="stylesheet", href="css/style.css")
+  body
+    header.header(role='navigation')
+      h1 Get Amazing Facts
+    section.section
+      .container
+        .side-nav
+          .fact-type
+            h4 Fact Type
+          ul.un-lists
+            li.lists
+              a.links(href='/') Home
+            li.lists
+              a.links(href='/renderMath') Math Fact
+            li.lists
+              a.links(href='/renderDate') Date Fact
+            li.lists
+              a.links(href='/yearfact') Year Fact
+            li.lists
+              a.links(href="/renderTrivia") Trivia Fact
+            li.lists
+              a.links(href='/renderRandom') Random Fact
+        .show-box
+          .number-fact

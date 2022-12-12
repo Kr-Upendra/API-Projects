@@ -1,0 +1,23 @@
+include partials/header
+    .fact-type
+        h4 Get facts based on the date and month
+    form.form-field
+        .input-box
+            label.label-text Day:
+            input(type='number', min='1', max='31', placeholder='day', required='')
+            label.label-text Month:
+            input(type='number', min='1', max='12', placeholder='month', required='')
+        button.generate-fact(type='submit') Get Fact
+    .show-fact
+        p.fact-text
+            span.fact
+                strong The Fact : 
+            | Péter Lékó becomes the youngest chess grand master
+        p.number
+            span.fact
+                strong The Year : 
+            | 1789
+        p.number
+            span.fact
+                strong The Number : 
+            | 29
