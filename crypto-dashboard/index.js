@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 
 app.get("/convert", (req, res) => {
-  console.log(req.query);
   const options = {
     method: "GET",
     url: "https://alpha-vantage.p.rapidapi.com/query",
