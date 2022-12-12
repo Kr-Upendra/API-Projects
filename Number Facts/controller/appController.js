@@ -146,3 +146,33 @@ exports.yearFact = (req, res) => {
       });
     });
 };
+
+exports.renderDate = (req, res) => {
+  res.render("dateFact", {
+    title: "The Date Fact | Amazing Facts",
+  });
+};
+
+exports.renderMath = (req, res) => {
+  res.render("mathFact", {
+    title: "The Math Fact | Amazing Facts",
+  });
+};
+
+exports.renderRandom = (req, res) => {
+  res.render("randomFact", {
+    title: "The Random Fact | Amazing Facts",
+  });
+};
+
+exports.renderTrivia = (req, res) => {
+  res.render("triviaFact", {
+    title: "The Trivia Fact | Amazing Facts",
+  });
+};
+
+exports.renderYear = (req, res) => {
+  res.render("yearFact", {
+    title: "The Year Fact | Amazing Facts",
+  });
+};

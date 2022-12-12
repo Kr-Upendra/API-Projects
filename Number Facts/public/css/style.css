@@ -1,11 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+:root {
+  --fontFamily: "Poppins", sans-serif;
+  --font-400: 400;
+  --font-500: 500;
+  --font-700: 700;
+  --lightGrey: #4b4453;
+  --voiletClr: #845ec2;
+  --darkVoilet: #5b3894;
+  --linkBG: linear-gradient(
+    to right,
+    #ffeef8,
+    #fbeff8,
+    #f7eff7,
+    #f4f0f6,
+    #f2f0f4,
+    #f2f1f5,
+    #f2f2f5,
+    #f2f3f6,
+    #f1f6fa,
+    #f0f9fd,
+    #eefcfe,
+    #eefffe
+  );
+  --linkReverse: linear-gradient(
+    to right,
+    #f0f9fd,
+    #eefcfe,
+    #eefffe,
+    #f1f6fa,
+    #fbeff8,
+    #f2f3f6,
+    #f2f2f5,
+    #f4f0f6,
+    #f2f0f4,
+    #f2f1f5,
+    #f7eff7,
+    #ffeef8
+  );
+  --bodyBG: linear-gradient(
+    to right top,
+    #f3f8ff,
+    #eaf2f6,
+    #e4ecec,
+    #e1e5e2,
+    #dddedb
+  );
+
+  --boxShadow: rgba(11, 123, 250, 0.45) 0px 25px 20px -20px;
+  --inputShadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  font-family: var(--fontFamily);
+}
+
 body {
-  background-color: blue;
   width: 100%;
   height: 100vh;
+  background-image: var(--bodyBG);
+  font-size: 62.5%;
+}
+
+.header {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 2.55rem;
+  color: var(--voiletClr);
+  font-weight: var(--font-700);
+}
+
+.section {
+  padding: 2rem 10rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 70vh;
+  box-shadow: var(--boxShadow);
+}
+
+.side-nav {
+  padding: 1rem;
+  background-color: #dddedb;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.un-lists {
+  padding: 0.5rem;
+  list-style-type: none;
+}
+
+.lists {
+  margin: 0 0 0.4rem;
+}
+
+.links {
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--lightGrey);
+  background-image: var(--linkBG);
+  transition: background-image 0.4s ease-in-out;
+}
+
+.links:hover {
+  background-image: var(--linkReverse);
+}
+
+.fact-type {
+  margin-bottom: 1rem;
+}
+
+.fact-type h4 {
+  font-size: 1.45rem;
+  color: var(--darkVoilet);
+}
+
+.show-box {
+  grid-column: 2 / span 4;
+  background-color: #edf7da9d;
+  padding: 1rem;
+}
+
+/* .number-fact {
+  padding: 1rem;
+} */
+
+.show-fact,
+.form-field {
+  padding-left: 1rem;
+}
+
+.form-field {
+  margin: 2.45rem 0;
+}
+
+.input-box {
+  margin-bottom: 1rem;
+}
+
+.label-text {
+  font-size: 1rem;
+  margin-right: 0.55rem;
+  color: #ff4400;
+}
+
+.input-box input {
+  padding: 0.45rem 0.45rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--voiletClr);
+  border-radius: 0.3rem;
+  color: #ff4400;
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  background-image: var(--linkBG);
+  box-shadow: var(--inputShadow);
+  margin-right: 2.55rem;
+}
+
+::placeholder {
+  color: var(--voiletClr);
+  font-weight: var(--font-400);
+}
+
+.generate-fact {
+  font-size: 1rem;
+  padding: 0.55rem 1.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid orangered;
+  outline: none;
+  color: orangered;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s;
+}
+
+.generate-fact:hover {
+  color: #fff;
+}
+
+.generate-fact::after {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--voiletClr);
+  border-radius: 0.35rem;
+  z-index: -1;
+  transition: width 0.4s ease-in-out;
+}
+
+.generate-fact:hover::after {
+  width: 100%;
+}
+
+.show-fact {
+  padding-right: 8rem;
+}
+
+.show-box p {
+  font-size: 1rem;
+  color: var(--lightGrey);
+  margin-bottom: 1rem;
+}
+
+.fact {
+  color: var(--darkVoilet);
+  margin-right: 0.45rem;
+}
+
+::selection {
+  background-color: #dddedb;
+  color: #845ec2;
+}
+
+.home-page {
+  text-align: center;
+  padding: 5rem;
+}
+
+.home-heading {
+  font-size: 3.75rem;
+  color: var(--darkVoilet);
+  margin-bottom: 1rem;
+}
+
+.home-para {
+  color: var(--lightGrey);
+  font-size: 0.95rem;
 }
