@@ -3,6 +3,8 @@ const handleOptions = require("./handleOptions");
 
 exports.mathFact = (req, res) => {
   let mathNumber = req.query.number || 1;
+  if (!parseInt(mathNumber))
+    return res.render("error", { message: "Please provide a valid number!" });
   const path = `/${mathNumber}/math?fragment=true&json=true`;
   const options = handleOptions.option(path);
   const title = "The math facts | Amazing facts";
@@ -20,6 +22,8 @@ exports.dateFact = (req, res) => {
 
 exports.triviaFact = (req, res) => {
   let triviaNumber = req.query.triviaNum || 1;
+  if (!parseInt(triviaNumber))
+    return res.render("error", { message: "Please provide a valid number!" });
   const path = `/${triviaNumber}/trivia?fragment=true&notfound=floor&json=true`;
   const options = handleOptions.option(path);
   const title = "The trivia facts | Amazing facts";
@@ -37,6 +41,8 @@ exports.randomFact = (req, res) => {
 
 exports.yearFact = (req, res) => {
   let year = req.query.year || 2000;
+  if (!parseInt(year))
+    return res.render("error", { message: "Please provide a valid year!" });
   const title = "The year Fact | Amazing facts";
   const path = `/${year}/year?fragment=true&json=true`;
   const options = handleOptions.option(path);

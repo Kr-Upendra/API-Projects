@@ -118,10 +118,12 @@ body {
   color: var(--lightGrey);
   background-image: var(--linkBG);
   transition: background-image 0.4s ease-in-out;
+  border-bottom: 2px solid transparent;
 }
 
-.links:hover {
-  background-image: var(--linkReverse);
+.links:hover,
+.active {
+  border-bottom: 2px solid var(--lightGrey);
 }
 
 .fact-type {
@@ -262,16 +264,17 @@ body {
 
 .error-message {
   margin-bottom: 5rem;
+  width: 100%;
+  text-align: center;
 }
 
 .error-message p {
   font-size: 0.95rem;
+  margin-bottom: 2.5rem;
 }
 
-.error a {
+.error-message a {
   text-decoration: none;
-  position: absolute;
-  top: 50%;
   padding: 0.5rem 2.15rem;
 }
 

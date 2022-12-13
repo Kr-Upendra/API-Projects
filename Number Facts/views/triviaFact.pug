@@ -9,7 +9,8 @@ include partials/header
         p.fact-text
             span.fact
                 strong The Fact : 
-            | #{result.text}
+            - var text = result.text 
+            | #{text.substr(0, 1).toUpperCase() + text.slice(1, text.length)}
         p.number
             span.fact
                 strong The Number : 
