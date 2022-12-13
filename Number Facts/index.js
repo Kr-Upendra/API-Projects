@@ -19,4 +19,11 @@ app.get("/", (req, res) => {
   });
 });
 
+app.all("*", (req, res) => {
+  res.render("error", {
+    title: "not found!",
+    message: "Page not found!",
+  });
+});
+
 module.exports = app;

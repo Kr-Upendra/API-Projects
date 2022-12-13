@@ -70,7 +70,7 @@ body {
 }
 
 .header {
-  height: 5rem;
+  height: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -250,4 +250,43 @@ body {
 .home-para {
   color: var(--lightGrey);
   font-size: 0.95rem;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.error-message {
+  margin-bottom: 5rem;
+}
+
+.error-message p {
+  font-size: 0.95rem;
+}
+
+.error a {
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  padding: 0.5rem 2.15rem;
+}
+
+.footer {
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  height: 2rem;
+  display: rel;
+  position: absolute;
+  bottom: 0;
+  padding-top: 0.5rem;
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  color: var(--lightGrey);
 }
