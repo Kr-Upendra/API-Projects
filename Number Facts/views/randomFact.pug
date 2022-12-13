@@ -1,19 +1,19 @@
 include partials/header
     .fact-type
         h4 Get random fact between in a range of number
-    form.form-field
+    form.form-field(action='/randomfact', method='get')
         .input-box
             label.label-text Min:
-            input(type='number', min='1', placeholder='day', required='')
+            input(type='number', min='1', placeholder='min number', required='', name="minRandom")
             label.label-text Max:
-            input(type='number', max='12', placeholder='month', required='')
+            input(type='number', placeholder='max number', required='', name="maxRandom")
         button.generate-fact(type='submit') Get Fact
     .show-fact
         p.fact-text
             span.fact
                 strong The Fact : 
-            | the number of kingdoms in Five Dynasties and Ten Kingdoms Period
+            | #{result.text}
         p.number
             span.fact
-                strong The Number : 
-            | 1789
+                strong The chosen number : 
+            | #{result.number}

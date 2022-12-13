@@ -1,178 +1,115 @@
-const axios = require("axios");
+const https = require("https");
 
 exports.mathFact = (req, res) => {
+  let mathNumber = req.query.number || 1;
   const options = {
     method: "GET",
-    url: `https://numbersapi.p.rapidapi.com/${req.body.num}/math`,
-    params: { fragment: "true", json: "true" },
+    hostname: "numbersapi.p.rapidapi.com",
+    port: null,
+    path: `/${mathNumber}/math?fragment=true&json=true`,
     headers: {
       "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+      useQueryString: true,
     },
   };
 
-  axios
-    .request(options)
-    .then((response) => {
-      res.status(200).json({
-        status: "success",
-        data: response.data,
-      });
-    })
-    .catch((err) => {
-      res.status(404).json({
-        status: "fail",
-        message: err.message,
-      });
-    });
+  const title = "The math facts | Amazing facts";
+  makeRequest(options, res, title, "mathFact");
 };
 
 exports.dateFact = (req, res) => {
-  const parameters = req.body;
+  let day = req.query.day || 1;
+  let month = req.query.month || 1;
   const options = {
     method: "GET",
-    url: `https://numbersapi.p.rapidapi.com/${parameters.month}/${parameters.day}/date`,
-    params: { fragment: "true", json: "true" },
+    hostname: "numbersapi.p.rapidapi.com",
+    port: null,
+    path: `/${month}/${day}/date?fragment=true&json=true`,
     headers: {
       "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+      useQueryString: true,
     },
   };
 
-  axios
-    .request(options)
-    .then((response) => {
-      res.status(response.status).json({
-        status: "success",
-        data: response.data,
-      });
-    })
-    .catch((err) => {
-      res.status(err.status).json({
-        status: "fail",
-        message: err.message,
-      });
-    });
+  const title = "The date facts | Amazing facts";
+  makeRequest(options, res, title, "dateFact");
 };
 
 exports.triviaFact = (req, res) => {
-  const parameters = req.body;
+  let triviaNumber = req.query.triviaNum || 1;
   const options = {
     method: "GET",
-    url: `https://numbersapi.p.rapidapi.com/${parameters.num}/trivia`,
-    params: { fragment: "true", notfound: "floor", json: "true" },
+    hostname: "numbersapi.p.rapidapi.com",
+    port: null,
+    path: `/${triviaNumber}/trivia?fragment=true&notfound=floor&json=true`,
     headers: {
       "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+      useQueryString: true,
     },
   };
 
-  axios
-    .request(options)
-    .then((response) => {
-      res.status(response.status).json({
-        status: "success",
-        data: response.data,
-      });
-    })
-    .catch((err) => {
-      res.status(err.status).json({
-        status: "fail",
-        message: err.message,
-      });
-    });
+  const title = "The trivia facts | Amazing facts";
+  makeRequest(options, res, title, "triviaFact");
 };
 
 exports.randomFact = (req, res) => {
-  const parameters = req.body;
+  let minNumber = req.query.minRandom || 1;
+  let maxNumber = req.query.maxRandom || 10;
+
   const options = {
     method: "GET",
-    url: "https://numbersapi.p.rapidapi.com/random/trivia",
-    params: {
-      min: parameters.min,
-      max: parameters.max,
-      fragment: "true",
-      json: "true",
-    },
+    hostname: "numbersapi.p.rapidapi.com",
+    port: null,
+    path: `/random/trivia?min=${minNumber}&max=${maxNumber}&fragment=true&json=true`,
     headers: {
       "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+      useQueryString: true,
     },
   };
 
-  axios
-    .request(options)
-    .then((response) => {
-      res.status(response.status).json({
-        status: "success",
-        data: response.data,
-      });
-    })
-    .catch((err) => {
-      res.status(err.status).json({
-        status: "fail",
-        message: err.message,
-      });
-    });
+  const title = "The random facts | Amazing facts";
+  makeRequest(options, res, title, "randomFact");
 };
 
 exports.yearFact = (req, res) => {
-  const parameters = req.body;
+  let year = req.query.year || 2000;
+  const title = "The year Fact | Amazing facts";
   const options = {
     method: "GET",
-    url: `https://numbersapi.p.rapidapi.com/${parameters.year}/year`,
-    params: {
-      fragment: "true",
-      json: "true",
-    },
+    hostname: "numbersapi.p.rapidapi.com",
+    port: null,
+    path: `/${year}/year?fragment=true&json=true`,
     headers: {
       "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+      useQueryString: true,
     },
   };
 
-  axios
-    .request(options)
-    .then((response) => {
-      res.status(response.status).json({
-        status: "success",
-        data: response.data,
+  makeRequest(options, res, title, "yearFact");
+};
+
+const makeRequest = (options, res, title, page) => {
+  try {
+    const request = https.request(options, (response) => {
+      const data = [];
+      response.on("data", (d) => {
+        data.push(d);
       });
-    })
-    .catch((err) => {
-      res.status(err.status).json({
-        status: "fail",
-        message: err.message,
+      response.on("end", () => {
+        const body = JSON.parse(data);
+        res.render(page, {
+          title: title,
+          result: body,
+        });
       });
     });
-};
-
-exports.renderDate = (req, res) => {
-  res.render("dateFact", {
-    title: "The Date Fact | Amazing Facts",
-  });
-};
-
-exports.renderMath = (req, res) => {
-  res.render("mathFact", {
-    title: "The Math Fact | Amazing Facts",
-  });
-};
-
-exports.renderRandom = (req, res) => {
-  res.render("randomFact", {
-    title: "The Random Fact | Amazing Facts",
-  });
-};
-
-exports.renderTrivia = (req, res) => {
-  res.render("triviaFact", {
-    title: "The Trivia Fact | Amazing Facts",
-  });
-};
-
-exports.renderYear = (req, res) => {
-  res.render("yearFact", {
-    title: "The Year Fact | Amazing Facts",
-  });
+    request.end();
+  } catch (err) {
+    res.send("err");
+  }
 };

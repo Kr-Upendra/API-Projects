@@ -1,20 +1,20 @@
 include partials/header
     .fact-type
         h4 Get facts based on the year
-    form.form-field(action='/formfact', method='get')
+    form.form-field(action='/yearfact', method='get')
         .input-box
-            input(type='text', placeholder='enter a number', required='', autocomplete='off')
+            input(type='text', placeholder='enter a year', required='', autocomplete='off', name="year")
         button.generate-fact(type='submit') Get Fact
     .show-fact
         p.fact-text
             span.fact
                 strong The Fact : 
-            | `${result.text}`
+            | #{result.text}
 
         p.number
             span.fact
                 strong The Year : 
-            | ${result.number}
+            | #{result.number}
 
 
 

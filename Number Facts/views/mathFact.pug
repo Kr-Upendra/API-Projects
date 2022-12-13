@@ -1,16 +1,16 @@
 include partials/header
     .fact-type
         h4 Get facts based on the number
-    form.form-field(action='/formfact', method='get')
+    form.form-field(action='/mathfact', method='get')
         .input-box
-            input(type='text', placeholder='enter a number', required='', autocomplete='off')
+            input(type='text', placeholder='enter a number', required='', autocomplete='off', name="number")
         button.generate-fact(type='submit') Get Fact
     .show-fact
         p.fact-text
             span.fact
                 strong The Fact : 
-            | the smallest natural number representable in two different ways as a sum of two positive cubes, as Ramanujan stated on the spot
+            | #{result.text}
         p.number
             span.fact
                 strong The Number : 
-            | 1789
+            | #{result.number}
