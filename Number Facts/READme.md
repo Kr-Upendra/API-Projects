@@ -14,3 +14,7 @@ This project is about telling different and interesting facts based on the numbe
 # Update
 
 This is not responsive at this point but in future I'll add responsiveness in this project
+
+# Issues
+
+If find any issue please let me know or feel free to fix that.
