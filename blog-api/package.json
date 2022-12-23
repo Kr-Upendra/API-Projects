@@ -4,7 +4,7 @@
   "description": "An Assignment to create a backend for blog site where I need to build two database model one for blog and other for reviews. ",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "Blog",
