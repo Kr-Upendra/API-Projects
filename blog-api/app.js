@@ -4,6 +4,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 
 const app = express();
+mongoose.set("strictQuery", false);
 
 app.use(express.json());
 app.use(morgan("short"));
