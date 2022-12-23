@@ -34,3 +34,7 @@ const reviewSchema = new mongoose.Schema({
     required: [true, "A review must belong to a blog!"],
   },
 });
+
+const Review = mongoose.model("Review", reviewSchema);
+
+module.exports = Review;
