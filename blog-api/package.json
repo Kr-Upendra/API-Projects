@@ -1,0 +1,24 @@
+{
+  "name": "blog-backend-apis",
+  "version": "1.0.0",
+  "description": "An Assignment to create a backend for blog site where I need to build two database model one for blog and other for reviews. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "keywords": [
+    "Blog",
+    "reviews",
+    "nodejs",
+    "express",
+    "backend"
+  ],
+  "author": "Upendra Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.1",
+    "morgan": "^1.10.0"
+  }
+}
