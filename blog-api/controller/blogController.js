@@ -25,21 +25,14 @@ exports.getBlog = catchAsync(async (req, res) => {
   });
 });
 
-exports.createBlog = async (req, res, next) => {
-  try {
-    const blog = await Blog.create(req.body);
-    res.status(201).json({
-      status: "success",
-      message: "created blog successfully!",
-      blog,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err.message,
-    });
-  }
-};
+exports.createBlog = catchAsync(async (req, res, next) => {
+  const blog = await Blog.create(req.body);
+  res.status(201).json({
+    status: "success",
+    message: "created blog successfully!",
+    blog,
+  });
+});
 
 exports.updateBlog = catchAsync(async (req, res) => {
   const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
