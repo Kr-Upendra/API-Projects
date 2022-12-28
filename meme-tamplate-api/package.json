@@ -1,0 +1,21 @@
+{
+  "name": "meme-tamplate-api",
+  "version": "1.0.0",
+  "description": "An api for meme templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "keywords": [
+    "meme",
+    "meme-templates",
+    "api",
+    "node"
+  ],
+  "author": "Upendra Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
