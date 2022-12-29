@@ -29,7 +29,12 @@ const upload = multer({
 exports.uploadMeme = upload.single("image");
 
 exports.getAll = catchAsync(async (req, res, next) => {
-  const memes = await Meme.find();
+  const memes = await Meme.find()
+    .where("category")
+    .equals("movie")
+    .where("category")
+    .equals("akshay kumar");
+
   res.status(200).json({
     status: "success",
     message: "all memes",
