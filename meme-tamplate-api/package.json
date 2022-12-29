@@ -4,7 +4,7 @@
   "description": "An api for meme templates",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "meme",
@@ -15,7 +15,13 @@
   "author": "Upendra Kumar",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "mongoose": "^6.8.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
