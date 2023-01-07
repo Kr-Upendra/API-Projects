@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.route("/search").get(memeController.searchByName);
 router.route("/searchFromMovie").get(memeController.searchFromMovie);
+router.route("/searchByMovieName").get(memeController.searchByMovieName);
 
 router
   .route("/")

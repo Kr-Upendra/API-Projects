@@ -80,9 +80,6 @@ exports.deleteMeme = catchAsync(async (req, res, next) => {
 });
 
 exports.getStats = catchAsync(async (req, res, next) => {
-  //   const regex = new RegExp(req.params.name, "i");
-  //   const query = { name: regex };
-  //   const stats = await Meme.find(query);
   const name = req.query.name;
   const stats = await Meme.findOne({
     name: {
@@ -96,6 +93,7 @@ exports.getStats = catchAsync(async (req, res, next) => {
   });
 });
 
+// get meme by search meme name
 exports.searchByName = catchAsync(async (req, res, next) => {
   const name = req.body.name;
   const search = await Meme.findOne({
@@ -115,5 +113,18 @@ exports.searchFromMovie = catchAsync(async (req, res, next) => {
     status: "success",
     length: search.length,
     data: search,
+  });
+});
+
+// get meme by movie or actor name
+exports.searchByMovieName = catchAsync(async (req, res, next) => {
+  const movieName = req.body.movieName;
+  const movieMeme = await Meme.find({
+    category: { $regex: new RegExp(movieName, "i") },
+  }).select("-category -__v");
+  res.status(200).json({
+    status: "success",
+    length: movieMeme.length,
+    data: movieMeme,
   });
 });
