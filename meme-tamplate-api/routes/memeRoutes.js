@@ -3,6 +3,9 @@ const memeController = require("../controller/memeController");
 
 const router = express.Router();
 
+router.route("/search").get(memeController.searchByName);
+router.route("/searchFromMovie").get(memeController.searchFromMovie);
+
 router
   .route("/")
   .get(memeController.getAll)

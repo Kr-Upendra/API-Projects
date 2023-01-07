@@ -29,11 +29,7 @@ const upload = multer({
 exports.uploadMeme = upload.single("image");
 
 exports.getAll = catchAsync(async (req, res, next) => {
-  const memes = await Meme.find()
-    .where("category")
-    .equals("movie")
-    .where("category")
-    .equals("akshay kumar");
+  const memes = await Meme.find();
 
   res.status(200).json({
     status: "success",
@@ -80,5 +76,44 @@ exports.deleteMeme = catchAsync(async (req, res, next) => {
     status: "success",
     message: "meme deleted successfully!",
     data: null,
+  });
+});
+
+exports.getStats = catchAsync(async (req, res, next) => {
+  //   const regex = new RegExp(req.params.name, "i");
+  //   const query = { name: regex };
+  //   const stats = await Meme.find(query);
+  const name = req.query.name;
+  const stats = await Meme.findOne({
+    name: {
+      $regex: name,
+      $options: "i",
+    },
+  });
+  res.status(200).json({
+    status: "success",
+    data: stats,
+  });
+});
+
+exports.searchByName = catchAsync(async (req, res, next) => {
+  const name = req.body.name;
+  const search = await Meme.findOne({
+    name: { $regex: new RegExp(name, "i") },
+  }).select("-category -__v");
+  res.status(200).json({
+    status: "success",
+    data: search,
+  });
+});
+
+exports.searchFromMovie = catchAsync(async (req, res, next) => {
+  const search = await Meme.find({
+    category: { $regex: new RegExp("movie", "i") },
+  }).select("-category -__v");
+  res.status(200).json({
+    status: "success",
+    length: search.length,
+    data: search,
   });
 });
